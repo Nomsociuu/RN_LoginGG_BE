@@ -46,19 +46,21 @@ exports.googleCallback = (req, res) => {
   const user = req.user; // User được passport gắn vào req
   const token = generateToken(user);
 
-  const userForApp = {
-    id: user._id,
-    name: user.fullName,
-    email: user.email,
-    picture: user.picture,
-  };
+  // const userForApp = {
+  //   id: user._id,
+  //   name: user.fullName,
+  //   email: user.email,
+  //   picture: user.picture,
+  // };
 
-  // Tạo URL để chuyển hướng về ứng dụng Expo với token và thông tin user
-  const redirectUrl = `${
-    process.env.EXPO_PUBLIC_SCHEME
-  }://auth?token=${token}&user=${encodeURIComponent(
-    JSON.stringify(userForApp)
-  )}`;
+  // // Tạo URL để chuyển hướng về ứng dụng Expo với token và thông tin user
+  // const redirectUrl = `${
+  //   process.env.EXPO_PUBLIC_SCHEME
+  // }://auth?token=${token}&user=${encodeURIComponent(
+  //   JSON.stringify(userForApp)
+  // )}`;
+
+  const redirectUrl = `${process.env.EXPO_PUBLIC_SCHEME}://auth?token=${token}`;
 
   // THÊM DÒNG NÀY ĐỂ DEBUG
   console.log("Redirecting to URL:", redirectUrl);
