@@ -6,8 +6,8 @@ const passport = require("passport");
 const session = require("express-session");
 require("dotenv").config();
 
-const connectDB = require("./config/db");
-const configurePassport = require("./config/passport");
+const connectDB = require("../config/db");
+const configurePassport = require("../config/passport");
 
 // Initialize Express App
 const app = express();
@@ -34,7 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // 4. Routes
-app.use("/auth", require("./routes/authRoutes"));
+app.use("/auth", require("../routes/authRoutes"));
 app.get("/", (req, res) => {
   res.send("✅ API is running...");
 });
