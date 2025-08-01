@@ -60,6 +60,9 @@ exports.googleCallback = (req, res) => {
     JSON.stringify(userForApp)
   )}`;
 
+  // THÊM DÒNG NÀY ĐỂ DEBUG
+  console.log("Redirecting to URL:", redirectUrl);
+
   // Chuyển hướng về app
   res.redirect(redirectUrl);
 };
