@@ -68,3 +68,8 @@ exports.googleCallback = (req, res) => {
   // Chuyển hướng về app
   res.redirect(redirectUrl);
 };
+
+exports.getMe = (req, res) => {
+  // `req.user` đã được middleware `protect` gắn vào
+  res.status(200).json(req.user);
+};

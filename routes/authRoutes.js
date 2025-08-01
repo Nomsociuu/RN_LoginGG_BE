@@ -1,7 +1,8 @@
-const express = require("express");
 const passport = require("passport");
+const express = require("express");
 const router = express.Router();
-const { googleCallback } = require("../controllers/authController");
+const { protect } = require("../middleware/authMiddleware");
+const { googleCallback, getMe } = require("../controllers/authController");
 
 // Route để bắt đầu quá trình đăng nhập với Google
 // Passport sẽ chuyển hướng người dùng đến trang đăng nhập của Google
@@ -20,5 +21,8 @@ router.get(
   }),
   googleCallback // Hàm xử lý logic sau khi xác thực thành công
 );
+
+// Thêm route /me
+router.get("/me", protect, getMe);
 
 module.exports = router;
